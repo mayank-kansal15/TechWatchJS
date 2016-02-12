@@ -1,0 +1,101 @@
+//Sidebar navigation
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+    &.bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+    > li {
+        > a {
+            padding-right: 10px;
+            padding-left: 10px;
+            color: #ffffff;
+            &:hover {
+                background-color: darken(#465a65, 10%);
+            }
+            .glyphicon {
+                margin-right: 5px;
+            }
+        }
+        &.active > a,
+        &.active > a:hover,
+        &.active > a:focus {
+            color: #fff;
+            background-color: darken(#465a65, 10%);
+        }
+    }
+}
+
+//Slide style
+.sidebar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        .transition(0.3s width linear);
+        position: fixed;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto; //Scrollable contents if viewport is shorter than content.
+        background-color: #465a65;
+        border-right: 1px solid #eee;
+
+        &.sidebar-text-view {
+            width: 200px;
+        }
+
+        &.hidden-sidebar {
+            width: 0;
+            opacity: 0;
+        }
+
+        &.sidebar-icon-view{
+            width: 50px;
+            a{
+                text-align: center;
+            }
+            .nav-sidebar-text{
+                opacity: 0;
+                font-size: 0;
+            }
+            .sidebar-slider{
+                text-align: center;
+                float: none;
+            }
+        }
+
+        .sidebar-slider{
+            float: right;
+        }
+    }
+}
+
+//Main content
+.main {
+    padding: 20px 8px
+}
+@media (min-width: 768px) {
+    .main{
+        .transition(0.3s margin linear);
+        margin-left: 200px;
+        &.main-partial{
+            margin-left: 50px;
+        }
+        &.full-width{
+            margin-left: 0;
+        }
+    }
+}
+
+
