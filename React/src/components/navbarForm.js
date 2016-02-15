@@ -14,7 +14,7 @@ export default class NavbarForm extends React.Component{
 		let self = this;
 		return(
 			<div className="navbar-form">
-			<FormSelect />
+			<FormSelect changeQuantityHandler={this.props.changeQuantityHandler}/>
             <FormSearch placeholderText="search" query={this.props.query} filterSearch={this.props.filterSearch}/>
 			<div className="btn-group" data-toggle="buttons">
 				{toggleButtonProperties.map(function(obj, i){

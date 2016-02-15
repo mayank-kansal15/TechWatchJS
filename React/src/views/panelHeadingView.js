@@ -13,7 +13,7 @@ export default class PanelHeadingView extends React.Component{
 			<div className="panel-heading">
                 <ul className="list-inline clearfix">
                 <li>
-                <NavbarForm query={this.props.query} filterSearch={this.props.filterSearch} changeViewHandler={this.props.changeViewHandler}/>
+                <NavbarForm query={this.props.query} filterSearch={this.props.filterSearch} changeViewHandler={this.props.changeViewHandler} changeQuantityHandler={this.props.changeQuantityHandler}/>
                 </li>
                 </ul>
             </div>

@@ -6,7 +6,7 @@ var imageStyles = {
 export default class GridSearchImage extends React.Component{
 	render(){
 		return(
-			<img alt="100%x200" src={this.props.imageSrc} data-holder-rendered="true" style={imageStyles}/>
+			<img alt="100%x200" src={this.props.imageSrc + '?random' + Math.random()} data-holder-rendered="true" style={imageStyles}/>
 		)
 	}
 }
