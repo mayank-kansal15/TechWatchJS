@@ -1,20 +1,24 @@
-import React from 'react';
-import { render } from 'react-dom'
-import { Router, Route, Link } from 'react-router'
+'use strict';
 
-export default class FormSearch extends React.Component{
-	constructor(props){
-		super(props);
+import React from 'react';
+
+export default class FormSearch extends React.Component {
+	render() {
+		return (
+					<div className='form-group'>
+						<input
+							type='search'
+							ref='searchField'
+							placeholder={this.props.placeholderText}
+							value={this.props.query}
+							className='search form-control'
+							onChange={this.handleChange.bind(this)} />
+					</div>
+				)
 	}
+
 	handleChange(){
-		var query=this.refs.searchField.value;
+		let query = this.refs.searchField.value;
 		this.props.filterSearch(query);
-	}
-	render(){
-		return(
-			<div className="form-group">
-			<input type="search" ref="searchField" placeholder={this.props.placeholderText} value={this.props.query} className="search form-control"  onChange={this.handleChange.bind(this)}/>
-			</div>
-			)
 	}
 }

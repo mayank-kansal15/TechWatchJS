@@ -1,21 +1,23 @@
-import React from 'react';
-import { render } from 'react-dom'
+'use strict';
 
-var optionList = [200,10, 50 , 100, 200, 500, 1000, 2500];
+import React from 'react';
+
+const optionList = [10, 50 , 100, 200, 500, 1000, 2500];
+
 export default class FormSelect extends React.Component{
-  changeHandler(event){
-    let selectedVal = event.target.value;
-    this.props.changeQuantityHandler(selectedVal);
-  }
+	
 	render(){
-		return(
+		return (
 			<div className="form-group">
-            <select className="form-control" onChange={this.changeHandler.bind(this)}>
-            {optionList.map(function(num){
-               return( <option>{num}</option>)
-           })}
-            </select>
-            </div>
-            )
+				<select className="form-control" onChange={this.changeHandler.bind(this)}>
+					{ optionList.map(num => this.props.dataQuantity === num ? (<option selected={true}>{num}</option>) : <option>{num}</option> )}
+				</select>
+			</div>
+		)
 	}
-}  
+
+	changeHandler(event){
+		let selectedVal = event.target.value;
+		this.props.changeQuantityHandler(selectedVal);
+	}
+}
