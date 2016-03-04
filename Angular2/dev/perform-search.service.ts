@@ -1,4 +1,5 @@
 export class SearchModel{
+		dataQuantity:number = 200;
 		searchData:Array;
         searchDataComplete:Array = searchDummyData;
         searchDataUpdated:Array =searchDummyData.slice(0, 199);
@@ -28,6 +29,10 @@ export class PerformSearchService{
 			}
 		})
 		this.SearchModelObject.searchDataUpdated = newSearchData;
+	}
+	changeDataQuantity(value){
+		value = parseInt(value);
+		this.SearchModelObject.searchDataUpdated = this.SearchModelObject.searchDataComplete.slice(0, value -1);
 	}
 
 
