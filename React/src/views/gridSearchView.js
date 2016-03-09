@@ -10,10 +10,10 @@ export default class GridSearchView extends React.Component{
 		return(
 			<div>
 				{this.props.searchData.map((obj, i) => (
-        			<div className="col-sm-12 col-md-8">
+        			<div className="col-sm-12 col-md-8" key={obj.id} >
 						<div className="thumbnail">
-							<GridSearchImage key={obj.id} imageSrc={obj.imgSrc}/>
-							<GridSearchDesc key={i} uid={obj.id} title={obj.email} desc={obj.details}/>
+							<GridSearchImage imageSrc={obj.imgSrc}/>
+							<GridSearchDesc uid={obj.id} title={obj.email} desc={obj.details}/>
 						</div>
 					</div>
         		))}

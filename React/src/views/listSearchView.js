@@ -15,7 +15,7 @@ export default class ListSearchView extends React.Component{
                         <ListSearchHead />
 	                        <tbody>
                                 {
-                                    this.props.searchData.map((obj, i) => <ListSearchDesc key={i} uid={obj.id} email={obj.email} desc={obj.details}/> )
+                                    this.props.searchData.map((obj, i) => <ListSearchDesc key={obj.id} uid={obj.id} email={obj.email} desc={obj.details}/> )
                                 }
 	                        </tbody>
                 		</table>

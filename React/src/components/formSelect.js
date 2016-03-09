@@ -9,8 +9,8 @@ export default class FormSelect extends React.Component{
 	render(){
 		return (
 			<div className="form-group">
-				<select className="form-control" onChange={this.changeHandler.bind(this)}>
-					{ optionList.map(num => this.props.dataQuantity === num ? (<option selected={true}>{num}</option>) : <option>{num}</option> )}
+				<select className="form-control" onChange={this.changeHandler.bind(this)} defaultValue={this.props.dataQuantity}>
+					{ optionList.map(num => <option key={num}>{num}</option> )}
 				</select>
 			</div>
 		)

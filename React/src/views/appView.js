@@ -14,8 +14,8 @@ export default class AppView extends React.Component{
 		this.state = {
 			query:'',
             view: 'grid',
-            data: this.props.demoData.slice(0, 199),
-            dataQuantity : 50
+            data: this.props.demoData.slice(0, 9),
+            dataQuantity : 10
 		};
 	}
 
