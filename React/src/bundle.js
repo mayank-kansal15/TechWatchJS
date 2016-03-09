@@ -25822,7 +25822,7 @@ exports.default = FormSelect;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25840,32 +25840,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var FormToggleButton = function (_React$Component) {
-	_inherits(FormToggleButton, _React$Component);
+  _inherits(FormToggleButton, _React$Component);
 
-	function FormToggleButton() {
-		_classCallCheck(this, FormToggleButton);
+  function FormToggleButton() {
+    _classCallCheck(this, FormToggleButton);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(FormToggleButton).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(FormToggleButton).apply(this, arguments));
+  }
 
-	_createClass(FormToggleButton, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'label',
-				{ className: 'btn btn-primary ' + this.props.activeClass, id: this.props.id, onClick: this.changeHandler.bind(this) },
-				_react2.default.createElement('input', { type: 'radio', name: this.props.buttonName, autoComplete: 'off' }),
-				this.props.labelName
-			);
-		}
-	}, {
-		key: 'changeHandler',
-		value: function changeHandler(e) {
-			this.props.changeViewHandler(this.props.uid);
-		}
-	}]);
+  _createClass(FormToggleButton, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'label',
+        { className: 'btn btn-primary' + (this.props.isActive ? ' active' : ''), onClick: this.props.changeViewHandler.bind(this, this.props.uid) },
+        _react2.default.createElement('input', { type: 'radio', name: this.props.buttonName, autoComplete: 'off' }),
+        this.props.labelName
+      );
+    }
+  }]);
 
-	return FormToggleButton;
+  return FormToggleButton;
 }(_react2.default.Component);
 
 exports.default = FormToggleButton;
@@ -26201,13 +26196,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var toggleButtonProperties = [{
 	activeClass: 'active',
 	buttonName: 'options',
-	uid: 'option1',
-	labelName: 'grid'
+	uid: 'grid',
+	labelName: 'Grid'
 }, {
 	activeClass: '',
 	buttonName: 'options',
-	uid: 'option2',
-	labelName: 'list'
+	uid: 'list',
+	labelName: 'List'
 }];
 
 var NavbarForm = function (_React$Component) {
@@ -26237,7 +26232,7 @@ var NavbarForm = function (_React$Component) {
 					toggleButtonProperties.map(function (obj, i) {
 						return _react2.default.createElement(_formToggleButton2.default, {
 							key: i,
-							activeClass: obj.activeClass,
+							isActive: obj.uid === _this2.props.view,
 							buttonName: obj.buttonName,
 							uid: obj.uid,
 							labelName: obj.labelName,
@@ -26314,17 +26309,179 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = require('react-dom');
 
+var _reactRouter = require('react-router');
+
 var _appView = require('./views/appView');
 
 var _appView2 = _interopRequireDefault(_appView);
 
+var _routeInfo = require('./routeInfo');
+
+var _routeInfo2 = _interopRequireDefault(_routeInfo);
+
+var _dataView = require('./views/dataView');
+
+var _dataView2 = _interopRequireDefault(_dataView);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var customData = require('./assets/json/data.json');
+(0, _reactDom.render)(_react2.default.createElement(
+	_reactRouter.Router,
+	{ history: _reactRouter.browserHistory },
+	_react2.default.createElement(
+		_reactRouter.Route,
+		{ path: _routeInfo2.default.Home, component: _appView2.default },
+		_react2.default.createElement(_reactRouter.Route, { path: _routeInfo2.default.Data, component: _dataView2.default })
+	)
+), document.getElementById('root'));
 
-(0, _reactDom.render)(_react2.default.createElement(_appView2.default, { demoData: customData }), document.getElementById('root'));
+},{"./routeInfo":221,"./views/appView":222,"./views/dataView":223,"react":207,"react-dom":25,"react-router":45}],219:[function(require,module,exports){
+'use strict';
 
-},{"./assets/json/data.json":208,"./views/appView":219,"react":207,"react-dom":25}],219:[function(require,module,exports){
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function (context) {
+    context.listeners = [];
+
+    context.notify = function () {
+        this.listeners.slice().forEach(function (listener) {
+            listener.fn.apply(listener.context);
+        });
+    };
+
+    context.onChange = function (listener, context) {
+        this.listeners.push({
+            fn: listener,
+            context: context || this
+        });
+    };
+
+    context.offChange = function (listener) {
+        for (var i = 0; i < this.listeners.length; i++) {
+            if (this.listeners[i].fn === listener) {
+                this.listeners.splice(i, 1);
+                break;
+            }
+        }
+    };
+    return context;
+};
+
+},{}],220:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _baseModel = require('./baseModel');
+
+var _baseModel2 = _interopRequireDefault(_baseModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var sampleData = require('../assets/json/data.json');
+
+var data = null;
+var dataQuantity = 10;
+var query = '';
+
+var performSearch = function performSearch() {
+    return sampleData.slice(0, dataQuantity - 1).filter(function (d) {
+        return d.email.indexOf(query) > -1;
+    });
+};
+
+exports.default = (0, _baseModel2.default)({
+
+    getData: function getData() {
+        return performSearch();
+    },
+
+    getDataQuantity: function getDataQuantity() {
+        return dataQuantity;
+    },
+
+    setDataQuantity: function setDataQuantity(value) {
+        dataQuantity = value;
+        this.notify();
+    },
+
+    getQuery: function getQuery() {
+        return query;
+    },
+
+    setQuery: function setQuery(value) {
+        query = value;
+        this.notify();
+    }
+});
+
+},{"../assets/json/data.json":208,"./baseModel":219}],221:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    Home: '/',
+    Data: '/data'
+};
+
+},{}],222:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _navbarView = require('./navbarView');
+
+var _navbarView2 = _interopRequireDefault(_navbarView);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AppView = function (_React$Component) {
+	_inherits(AppView, _React$Component);
+
+	function AppView() {
+		_classCallCheck(this, AppView);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(AppView).apply(this, arguments));
+	}
+
+	_createClass(AppView, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'myApp' },
+				_react2.default.createElement(_navbarView2.default, null),
+				this.props.children
+			);
+		}
+	}]);
+
+	return AppView;
+}(_react2.default.Component);
+
+exports.default = AppView;
+
+},{"./navbarView":226,"react":207}],223:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26341,10 +26498,6 @@ var _navbarView = require('./navbarView.js');
 
 var _navbarView2 = _interopRequireDefault(_navbarView);
 
-var _panelHeadingView = require('./panelHeadingView.js');
-
-var _panelHeadingView2 = _interopRequireDefault(_panelHeadingView);
-
 var _gridSearchView = require('./gridSearchView.js');
 
 var _gridSearchView2 = _interopRequireDefault(_gridSearchView);
@@ -26352,6 +26505,16 @@ var _gridSearchView2 = _interopRequireDefault(_gridSearchView);
 var _listSearchView = require('./listSearchView.js');
 
 var _listSearchView2 = _interopRequireDefault(_listSearchView);
+
+var _navbarForm = require('../components/navbarForm');
+
+var _navbarForm2 = _interopRequireDefault(_navbarForm);
+
+var _dataViewModel = require('../models/dataViewModel');
+
+var _dataViewModel2 = _interopRequireDefault(_dataViewModel);
+
+var _reactRouter = require('react-router');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26361,108 +26524,84 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AppView = function (_React$Component) {
-	_inherits(AppView, _React$Component);
+var DataView = function (_React$Component) {
+	_inherits(DataView, _React$Component);
 
-	function AppView(props) {
-		_classCallCheck(this, AppView);
+	function DataView(props) {
+		_classCallCheck(this, DataView);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppView).call(this, props));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DataView).call(this, props));
 
+		_this.models = [_dataViewModel2.default];
 		_this.state = {
-			query: '',
-			view: 'grid',
-			data: _this.props.demoData.slice(0, 9),
-			dataQuantity: 10
+			view: 'grid'
 		};
 		return _this;
 	}
 
-	_createClass(AppView, [{
-		key: 'changeDataQuantity',
-		value: function changeDataQuantity(selectedValue) {
-			this.performSearch(this.state.query, selectedValue);
+	_createClass(DataView, [{
+		key: 'onDataQuantityChange',
+		value: function onDataQuantityChange(dataQuantity) {
+			_dataViewModel2.default.setDataQuantity(dataQuantity);
 		}
 	}, {
-		key: 'performSearch',
-		value: function performSearch(queryText, selectedValue) {
-			var completeData = [];
-			selectedValue !== undefined && Number(selectedValue) !== NaN ? completeData = this.props.demoData.slice(0, selectedValue - 1) : completeData = this.props.demoData.slice(0, this.state.dataQuantity - 1);
-
-			if (selectedValue === 'All') {
-				completeData = this.props.demoData.slice(0, this.props.demoData.length - 1);
-			}
-
-			var queryResult = [];
-
-			completeData.map(function (obj) {
-				if (obj.email.indexOf(queryText) != -1) {
-					queryResult.push(obj);
-				}
-			});
-
-			this.setState({
-				query: queryText,
-				data: queryResult
-			});
-
-			if (selectedValue !== undefined && Number(selectedValue) !== NaN) {
-				this.setState({
-					dataQuantity: selectedValue
-				});
-			}
+		key: 'onFilterTextChange',
+		value: function onFilterTextChange(query) {
+			_dataViewModel2.default.setQuery(query);
 		}
 	}, {
 		key: 'changeView',
-		value: function changeView(currentId) {
-			this.setState({
-				view: currentId === 'option1' ? 'grid' : 'list'
-			});
+		value: function changeView(view) {
+			this.setState({ view: view });
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var view = this.state.view === 'grid' ? _react2.default.createElement(
+			var view = _react2.default.createElement(
 				'div',
 				{ className: 'panel-body grid-view' },
 				_react2.default.createElement(
 					'div',
 					{ className: 'row' },
-					_react2.default.createElement(_gridSearchView2.default, { searchData: this.state.data })
+					this.state.view === 'grid' ? _react2.default.createElement(_gridSearchView2.default, null) : _react2.default.createElement(_listSearchView2.default, null)
 				)
-			) : _react2.default.createElement(
-				'div',
-				{ className: 'panel-body list-view' },
-				_react2.default.createElement(_listSearchView2.default, { searchData: this.state.data })
 			);
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'myApp' },
-				_react2.default.createElement(_navbarView2.default, null),
+				{ className: 'container' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'container' },
+					{ className: 'dashboard' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'dashboard' },
+						{ className: 'row' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'row' },
+							{ className: 'col-sm-24' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'col-sm-24' },
+								{ className: 'panel panel-default' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'panel panel-default' },
-									_react2.default.createElement(_panelHeadingView2.default, {
-										query: this.state.query,
-										dataQuantity: this.state.dataQuantity,
-										filterSearch: this.performSearch.bind(this),
-										changeViewHandler: this.changeView.bind(this),
-										changeQuantityHandler: this.changeDataQuantity.bind(this) }),
-									view
-								)
+									{ className: 'panel-heading' },
+									_react2.default.createElement(
+										'ul',
+										{ className: 'list-inline clearfix' },
+										_react2.default.createElement(
+											'li',
+											null,
+											_react2.default.createElement(_navbarForm2.default, {
+												query: this.state.query,
+												dataQuantity: this.state.dataQuantity,
+												view: this.state.view,
+												filterSearch: this.onFilterTextChange.bind(this),
+												changeViewHandler: this.changeView.bind(this),
+												changeQuantityHandler: this.onDataQuantityChange.bind(this) })
+										)
+									)
+								),
+								view
 							)
 						)
 					)
@@ -26471,12 +26610,12 @@ var AppView = function (_React$Component) {
 		}
 	}]);
 
-	return AppView;
+	return DataView;
 }(_react2.default.Component);
 
-exports.default = AppView;
+exports.default = DataView;
 
-},{"./gridSearchView.js":220,"./listSearchView.js":221,"./navbarView.js":222,"./panelHeadingView.js":223,"react":207}],220:[function(require,module,exports){
+},{"../components/navbarForm":216,"../models/dataViewModel":220,"./gridSearchView.js":224,"./listSearchView.js":225,"./navbarView.js":226,"react":207,"react-router":45}],224:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26497,6 +26636,10 @@ var _gridSearchDesc = require('../components/gridSearchDesc');
 
 var _gridSearchDesc2 = _interopRequireDefault(_gridSearchDesc);
 
+var _dataViewModel = require('../models/dataViewModel');
+
+var _dataViewModel2 = _interopRequireDefault(_dataViewModel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26508,19 +26651,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var GridSearchView = function (_React$Component) {
 	_inherits(GridSearchView, _React$Component);
 
-	function GridSearchView() {
+	function GridSearchView(props) {
 		_classCallCheck(this, GridSearchView);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(GridSearchView).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridSearchView).call(this, props));
+
+		_this.models = [_dataViewModel2.default];
+		_this.state = _this.getModelState();
+		return _this;
 	}
 
 	_createClass(GridSearchView, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			this.models.forEach(function (model) {
+				return model.onChange(_this2.onModelChange, _this2);
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			var _this3 = this;
+
+			this.models.forEach(function (model) {
+				return model.offChange(_this3.onModelChange);
+			});
+		}
+	}, {
+		key: 'onModelChange',
+		value: function onModelChange() {
+			this.setState(this.getModelState());
+		}
+	}, {
+		key: 'getModelState',
+		value: function getModelState() {
+			return { filterData: _dataViewModel2.default.getData() };
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
 				'div',
 				null,
-				this.props.searchData.map(function (obj, i) {
+				this.state.filterData.map(function (obj, i) {
 					return _react2.default.createElement(
 						'div',
 						{ className: 'col-sm-12 col-md-8', key: obj.id },
@@ -26541,7 +26716,7 @@ var GridSearchView = function (_React$Component) {
 
 exports.default = GridSearchView;
 
-},{"../components/gridSearchDesc":212,"../components/gridSearchImage":213,"react":207}],221:[function(require,module,exports){
+},{"../components/gridSearchDesc":212,"../components/gridSearchImage":213,"../models/dataViewModel":220,"react":207}],225:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26562,6 +26737,10 @@ var _listSearchDesc = require('../components/listSearchDesc');
 
 var _listSearchDesc2 = _interopRequireDefault(_listSearchDesc);
 
+var _dataViewModel = require('../models/dataViewModel');
+
+var _dataViewModel2 = _interopRequireDefault(_dataViewModel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26573,36 +26752,60 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ListSearchView = function (_React$Component) {
     _inherits(ListSearchView, _React$Component);
 
-    function ListSearchView() {
+    function ListSearchView(props) {
         _classCallCheck(this, ListSearchView);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchView).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchView).call(this, props));
+
+        _this.models = [_dataViewModel2.default];
+        _this.state = _this.getModelState();
+        return _this;
     }
 
     _createClass(ListSearchView, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            this.models.forEach(function (model) {
+                return model.onChange(_this2.onModelChange, _this2);
+            });
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            var _this3 = this;
+
+            this.models.forEach(function (model) {
+                return model.offChange(_this3.onModelChange);
+            });
+        }
+    }, {
+        key: 'onModelChange',
+        value: function onModelChange() {
+            this.setState(this.getModelState());
+        }
+    }, {
+        key: 'getModelState',
+        value: function getModelState() {
+            return { filterData: _dataViewModel2.default.getData() };
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: 'panel-body list-view' },
+                { className: 'col-sm-24' },
                 _react2.default.createElement(
-                    'div',
-                    { className: 'row' },
+                    'table',
+                    { className: 'table table-striped' },
+                    _react2.default.createElement(_listSearchHead2.default, null),
                     _react2.default.createElement(
-                        'div',
-                        { className: 'col-sm-24' },
-                        _react2.default.createElement(
-                            'table',
-                            { className: 'table table-striped' },
-                            _react2.default.createElement(_listSearchHead2.default, null),
-                            _react2.default.createElement(
-                                'tbody',
-                                null,
-                                this.props.searchData.map(function (obj, i) {
-                                    return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, email: obj.email, desc: obj.details });
-                                })
-                            )
-                        )
+                        'tbody',
+                        null,
+                        this.state.filterData.map(function (obj, i) {
+                            return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, email: obj.email, desc: obj.details });
+                        })
                     )
                 )
             );
@@ -26614,7 +26817,7 @@ var ListSearchView = function (_React$Component) {
 
 exports.default = ListSearchView;
 
-},{"../components/listSearchDesc":214,"../components/listSearchHead":215,"react":207}],222:[function(require,module,exports){
+},{"../components/listSearchDesc":214,"../components/listSearchHead":215,"../models/dataViewModel":220,"react":207}],226:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26631,6 +26834,10 @@ var _navigationItem = require('../components/navigationItem');
 
 var _navigationItem2 = _interopRequireDefault(_navigationItem);
 
+var _routeInfo = require('../routeInfo');
+
+var _routeInfo2 = _interopRequireDefault(_routeInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26639,18 +26846,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var navigationProps = [{ "route": "index.html", "routeName": "Home" }, { "route": "about", "routeName": "About" }, { "route": "contact", "routeName": "Contact" }];
+var NavbarView = function (_React$Component) {
+	_inherits(NavbarView, _React$Component);
 
-var NavigationHeader = function (_React$Component) {
-	_inherits(NavigationHeader, _React$Component);
+	function NavbarView() {
+		_classCallCheck(this, NavbarView);
 
-	function NavigationHeader() {
-		_classCallCheck(this, NavigationHeader);
-
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(NavigationHeader).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(NavbarView).apply(this, arguments));
 	}
 
-	_createClass(NavigationHeader, [{
+	_createClass(NavbarView, [{
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -26668,8 +26873,8 @@ var NavigationHeader = function (_React$Component) {
 							_react2.default.createElement(
 								'ul',
 								{ className: 'nav navbar-nav' },
-								navigationProps.map(function (obj, i) {
-									return _react2.default.createElement(_navigationItem2.default, { key: i, route: obj.route, routeName: obj.routeName });
+								Object.keys(_routeInfo2.default).map(function (key, i) {
+									return _react2.default.createElement(_navigationItem2.default, { key: key, route: _routeInfo2.default[key], routeName: key });
 								})
 							)
 						)
@@ -26679,67 +26884,9 @@ var NavigationHeader = function (_React$Component) {
 		}
 	}]);
 
-	return NavigationHeader;
+	return NavbarView;
 }(_react2.default.Component);
 
-exports.default = NavigationHeader;
+exports.default = NavbarView;
 
-},{"../components/navigationItem":217,"react":207}],223:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _navbarForm = require('../components/navbarForm');
-
-var _navbarForm2 = _interopRequireDefault(_navbarForm);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var PanelHeadingView = function (_React$Component) {
-	_inherits(PanelHeadingView, _React$Component);
-
-	function PanelHeadingView() {
-		_classCallCheck(this, PanelHeadingView);
-
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(PanelHeadingView).apply(this, arguments));
-	}
-
-	_createClass(PanelHeadingView, [{
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'panel-heading' },
-				_react2.default.createElement(
-					'ul',
-					{ className: 'list-inline clearfix' },
-					_react2.default.createElement(
-						'li',
-						null,
-						_react2.default.createElement(_navbarForm2.default, this.props)
-					)
-				)
-			);
-		}
-	}]);
-
-	return PanelHeadingView;
-}(_react2.default.Component);
-
-exports.default = PanelHeadingView;
-
-},{"../components/navbarForm":216,"react":207}]},{},[218]);
+},{"../components/navigationItem":217,"../routeInfo":221,"react":207}]},{},[218]);

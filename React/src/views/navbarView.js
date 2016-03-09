@@ -2,14 +2,9 @@
 
 import React from 'react';
 import NavigationItem from '../components/navigationItem'
+import RouteInfo from '../routeInfo';
 
-var navigationProps = [
-	{"route" : "index.html", "routeName" : "Home"},
-	{"route" : "about", "routeName" : "About"},
-	{"route" : "contact", "routeName" : "Contact"}
-]
-
-export default class NavigationHeader extends React.Component{
+export default class NavbarView extends React.Component{
 
 	render(){
 		return(
@@ -18,7 +13,7 @@ export default class NavigationHeader extends React.Component{
 			        <div className="navbar-header">
 				        <div id="navbar" className="navbar-collapse collapse">
 				            <ul className="nav navbar-nav">
-				            	{ navigationProps.map((obj, i) => <NavigationItem key={i} route={obj.route} routeName={obj.routeName} /> )}
+				            	{ Object.keys(RouteInfo).map((key, i) => <NavigationItem key={key} route={RouteInfo[key]} routeName={key} /> )}
 				            </ul>
 				        </div>
 			        </div>

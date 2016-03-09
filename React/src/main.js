@@ -2,10 +2,15 @@
 
 import React from 'react';
 import { render } from 'react-dom'
+import { browserHistory, Router, Route, Link } from 'react-router'
 import AppView from './views/appView';
-import Contact from './views/appView';
-import About from './views/appView';
+import RouteInfo from './routeInfo';
+import DataView from './views/dataView';
 
-let customData = require('./assets/json/data.json');
-
-render(<AppView demoData={customData}/>, document.getElementById('root'))
+render((
+	<Router history={browserHistory}>
+	  <Route path={RouteInfo.Home} component={AppView}>
+	    <Route path={RouteInfo.Data} component={DataView} />
+	  </Route>
+	</Router>
+), document.getElementById('root'));

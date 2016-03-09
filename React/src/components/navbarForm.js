@@ -9,14 +9,14 @@ const toggleButtonProperties = [
 	{
 		activeClass: 'active',
 		buttonName : 'options',
-		uid : 'option1',
-		labelName :'grid'
+		uid : 'grid',
+		labelName :'Grid'
 	},
 	{
 		activeClass:'',
 		buttonName : 'options',
-		uid : 'option2',
-		labelName: 'list'
+		uid : 'list',
+		labelName: 'List'
 	}
 ]
 
@@ -32,7 +32,7 @@ export default class NavbarForm extends React.Component{
 				<div className='btn-group' data-toggle='buttons'>
 					{toggleButtonProperties.map((obj, i) => <FormToggleButton
 																key={i}
-																activeClass={obj.activeClass}
+																isActive={obj.uid === this.props.view}
 																buttonName={obj.buttonName}
 																uid={obj.uid}
 																labelName={obj.labelName}

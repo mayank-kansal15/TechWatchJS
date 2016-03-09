@@ -6,14 +6,10 @@ export default class FormToggleButton extends React.Component{
 
 	render(){
 		return(
-            	<label className={`btn btn-primary ${this.props.activeClass}`} id={this.props.id} onClick={this.changeHandler.bind(this)}>
+            	<label className={`btn btn-primary${this.props.isActive ? ' active' : ''}`} onClick={this.props.changeViewHandler.bind(this, this.props.uid)}>
                     <input type='radio' name={this.props.buttonName} autoComplete='off' />
                     {this.props.labelName}
                 </label>
 		)
-	}
-
-	changeHandler(e){
-		this.props.changeViewHandler(this.props.uid);
 	}
 }
