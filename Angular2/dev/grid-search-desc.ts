@@ -25,6 +25,6 @@ import {Component} from 'angular2/core';
 export class GridSearchDesc {
 	showFilter = 'hidden';
 	toggleShowFilter(){
-		this.showFilter === 'hidden' ? this.showFilter = 'show' : this.showFilter = 'hidden';
+		this.showFilter = this.showFilter === 'hidden' ?  'show' : 'hidden';
 	}
 }

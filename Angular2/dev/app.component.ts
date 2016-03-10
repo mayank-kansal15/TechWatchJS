@@ -1,37 +1,22 @@
 import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {PanelHeadingView} from './panel-heading.view';
 import {GridSearchView} from './grid-search.view';
 import {ListSearchView} from './list-search.view';
 import {SearchModel, PerformSearchService} from './perform-search.service'
 
 @Component({
-    selector: 'my-app',
-    directives:[PanelHeadingView, GridSearchView, ListSearchView],
+    selector: 'my-app-data',
+    directives:[PanelHeadingView, GridSearchView, ListSearchView, ROUTER_DIRECTIVES],
     template: `
 		    <div class="myApp">
-		    <nav class="navbar navbar-inverse">
-			    <div class="container">
-			        <div class="navbar-header">
-			        <div id="navbar" class="navbar-collapse collapse">
-			            <ul class="nav navbar-nav">
-						    <li class="active"><a href=#>Home</a></li>
-			            </ul>
-			        </div>
-			        </div>
-			    </div>
-			</nav>
 				<div class="container">
 				<div class="dashboard">
 				    <div class="row">
 				        <div class="col-sm-24">
 						<div class="panel panel-default">
 							<panel-heading [buttonModel]="toggleButtonModel"></panel-heading>
-							<div *ngIf="searchService.SearchModelObject.gridView">
-								<grid-search-view *ngFor="#dataObj of searchService.SearchModelObject.searchDataUpdated" [dataModel]="dataObj"></grid-search-view>
-							</div>
-		        			<div *ngIf="searchService.SearchModelObject.listView">
-		        				<list-search-view *ngFor="#dataObj of searchService.SearchModelObject.searchDataUpdated" [dataModel]="dataObj"></list-search-view>
-		        			</div>
+							<router-outlet></router-outlet>
 						</div>
 					</div>
 				</div>
@@ -40,7 +25,11 @@ import {SearchModel, PerformSearchService} from './perform-search.service'
 			</div>
     `,
 })
-export class AppComponent {
+@RouteConfig([
+  {path:'/grid-search/', as: 'GridSearchView', component: GridSearchView}
+  {path:'/list-search/', as: 'ListSearchView', component: ListSearchView}
+])
+export class AppDataComponent {
 	constructor(
         public searchService:PerformSearchService
     ){
