@@ -26315,6 +26315,10 @@ var _appView = require('./views/appView');
 
 var _appView2 = _interopRequireDefault(_appView);
 
+var _homeView = require('./views/homeView');
+
+var _homeView2 = _interopRequireDefault(_homeView);
+
 var _routeInfo = require('./routeInfo');
 
 var _routeInfo2 = _interopRequireDefault(_routeInfo);
@@ -26330,12 +26334,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 	{ history: _reactRouter.browserHistory },
 	_react2.default.createElement(
 		_reactRouter.Route,
-		{ path: _routeInfo2.default.Home, component: _appView2.default },
+		{ path: '/', component: _appView2.default },
+		_react2.default.createElement(_reactRouter.Route, { path: _routeInfo2.default.Home, component: _homeView2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: _routeInfo2.default.Data, component: _dataView2.default })
 	)
 ), document.getElementById('root'));
 
-},{"./routeInfo":221,"./views/appView":222,"./views/dataView":223,"react":207,"react-dom":25,"react-router":45}],219:[function(require,module,exports){
+},{"./routeInfo":221,"./views/appView":222,"./views/dataView":223,"./views/homeView":225,"react":207,"react-dom":25,"react-router":45}],219:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26426,7 +26431,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
-    Home: '/',
+    Home: '/home',
     Data: '/data'
 };
 
@@ -26481,7 +26486,7 @@ var AppView = function (_React$Component) {
 
 exports.default = AppView;
 
-},{"./navbarView":226,"react":207}],223:[function(require,module,exports){
+},{"./navbarView":227,"react":207}],223:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26615,7 +26620,7 @@ var DataView = function (_React$Component) {
 
 exports.default = DataView;
 
-},{"../components/navbarForm":216,"../models/dataViewModel":220,"./gridSearchView.js":224,"./listSearchView.js":225,"./navbarView.js":226,"react":207,"react-router":45}],224:[function(require,module,exports){
+},{"../components/navbarForm":216,"../models/dataViewModel":220,"./gridSearchView.js":224,"./listSearchView.js":226,"./navbarView.js":227,"react":207,"react-router":45}],224:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26720,6 +26725,64 @@ exports.default = GridSearchView;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _routeInfo = require('../routeInfo');
+
+var _routeInfo2 = _interopRequireDefault(_routeInfo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HomeView = function (_React$Component) {
+	_inherits(HomeView, _React$Component);
+
+	function HomeView() {
+		_classCallCheck(this, HomeView);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(HomeView).apply(this, arguments));
+	}
+
+	_createClass(HomeView, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-sm-6' },
+					_react2.default.createElement(
+						'a',
+						{ className: 'well center-block', href: '#' + _routeInfo2.default.Data },
+						'Test 1'
+					)
+				)
+			);
+		}
+	}]);
+
+	return HomeView;
+}(_react2.default.Component);
+
+exports.default = HomeView;
+
+},{"../routeInfo":221,"react":207}],226:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
@@ -26817,7 +26880,7 @@ var ListSearchView = function (_React$Component) {
 
 exports.default = ListSearchView;
 
-},{"../components/listSearchDesc":214,"../components/listSearchHead":215,"../models/dataViewModel":220,"react":207}],226:[function(require,module,exports){
+},{"../components/listSearchDesc":214,"../components/listSearchHead":215,"../models/dataViewModel":220,"react":207}],227:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
