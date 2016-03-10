@@ -7,10 +7,10 @@ const sampleData = require('../assets/json/data.json');
 let data = null;
 let dataQuantity = 10;
 let query = '';
-let showImages = true;
+let showImages = false;
 
 let performSearch = () => {
-	return sampleData.slice(0, dataQuantity - 1).filter(d => d.email.indexOf(query) > -1);
+	return sampleData.slice(0, dataQuantity).filter(d => d.email.indexOf(query) > -1);
 }
 
 export default BaseModel({

@@ -39,6 +39,6 @@ export default class ListSearchshowDesc extends React.Component{
 	expandText(){
 		this.setState({
 			showDesc: !this.state.showDesc
-		})
+		});
 	}
 }

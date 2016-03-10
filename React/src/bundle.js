@@ -26398,10 +26398,10 @@ var sampleData = require('../assets/json/data.json');
 var data = null;
 var dataQuantity = 10;
 var query = '';
-var showImages = true;
+var showImages = false;
 
 var performSearch = function performSearch() {
-	return sampleData.slice(0, dataQuantity - 1).filter(function (d) {
+	return sampleData.slice(0, dataQuantity).filter(function (d) {
 		return d.email.indexOf(query) > -1;
 	});
 };
