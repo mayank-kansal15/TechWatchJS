@@ -28,7 +28,7 @@ export default class NavbarForm extends React.Component{
 				<FormSelect
 					dataQuantity={this.props.dataQuantity}
 					changeQuantityHandler={this.props.changeQuantityHandler}/>
-	            <FormSearch placeholderText='search' query={this.props.query} filterSearch={this.props.filterSearch} />
+				<FormSearch placeholderText='search' query={this.props.query} filterSearch={this.props.filterSearch} />
 				<div className='btn-group' data-toggle='buttons'>
 					{toggleButtonProperties.map((obj, i) => <FormToggleButton
 																key={i}
@@ -37,7 +37,7 @@ export default class NavbarForm extends React.Component{
 																uid={obj.uid}
 																labelName={obj.labelName}
 																changeViewHandler={this.props.changeViewHandler.bind(this)} />
-	            	)}
+					)}
 				</div>
 			</div>
 		)

@@ -25822,7 +25822,7 @@ exports.default = FormSelect;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -25840,27 +25840,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var FormToggleButton = function (_React$Component) {
-  _inherits(FormToggleButton, _React$Component);
+	_inherits(FormToggleButton, _React$Component);
 
-  function FormToggleButton() {
-    _classCallCheck(this, FormToggleButton);
+	function FormToggleButton() {
+		_classCallCheck(this, FormToggleButton);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(FormToggleButton).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(FormToggleButton).apply(this, arguments));
+	}
 
-  _createClass(FormToggleButton, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'label',
-        { className: 'btn btn-primary' + (this.props.isActive ? ' active' : ''), onClick: this.props.changeViewHandler.bind(this, this.props.uid) },
-        _react2.default.createElement('input', { type: 'radio', name: this.props.buttonName, autoComplete: 'off' }),
-        this.props.labelName
-      );
-    }
-  }]);
+	_createClass(FormToggleButton, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'label',
+				{ className: 'btn btn-primary' + (this.props.isActive ? ' active' : ''), onClick: this.props.changeViewHandler.bind(this, this.props.uid) },
+				_react2.default.createElement('input', { type: 'radio', name: this.props.buttonName, autoComplete: 'off' }),
+				this.props.labelName
+			);
+		}
+	}]);
 
-  return FormToggleButton;
+	return FormToggleButton;
 }(_react2.default.Component);
 
 exports.default = FormToggleButton;
@@ -26013,7 +26013,7 @@ exports.default = GridSearchImage;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26031,67 +26031,67 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ListSearchDesc = function (_React$Component) {
-    _inherits(ListSearchDesc, _React$Component);
+	_inherits(ListSearchDesc, _React$Component);
 
-    function ListSearchDesc(props) {
-        _classCallCheck(this, ListSearchDesc);
+	function ListSearchDesc(props) {
+		_classCallCheck(this, ListSearchDesc);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchDesc).call(this, props));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchDesc).call(this, props));
 
-        _this.state = {
-            desc: false
-        };
-        return _this;
-    }
+		_this.state = {
+			desc: false
+		};
+		return _this;
+	}
 
-    _createClass(ListSearchDesc, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'tr',
-                null,
-                _react2.default.createElement(
-                    'td',
-                    null,
-                    _react2.default.createElement('input', { type: 'checkbox', id: 'blankCheckboxx', value: 'option1', 'aria-label': '...' })
-                ),
-                _react2.default.createElement(
-                    'td',
-                    null,
-                    this.props.email
-                ),
-                _react2.default.createElement(
-                    'td',
-                    null,
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        _react2.default.createElement(
-                            'a',
-                            { 'data-toggle': 'collapse', href: '#collapseExample3', onClick: this.expandText.bind(this, this.props.uid) },
-                            'More'
-                        )
-                    ),
-                    this.state.desc ? _react2.default.createElement(
-                        'div',
-                        { className: 'collapse in', id: 'collapseExample' + this.props.uid },
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            this.props.desc
-                        )
-                    ) : null
-                )
-            );
-        }
-    }, {
-        key: 'expandText',
-        value: function expandText(id) {
-            this.state.desc ? this.setState({ desc: false }) : this.setState({ desc: true });
-        }
-    }]);
+	_createClass(ListSearchDesc, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'tr',
+				null,
+				_react2.default.createElement(
+					'td',
+					null,
+					_react2.default.createElement('input', { type: 'checkbox', id: 'blankCheckboxx', value: 'option1', 'aria-label': '...' })
+				),
+				_react2.default.createElement(
+					'td',
+					null,
+					this.props.email
+				),
+				_react2.default.createElement(
+					'td',
+					null,
+					_react2.default.createElement(
+						'p',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ 'data-toggle': 'collapse', href: '#collapseExample3', onClick: this.expandText.bind(this, this.props.uid) },
+							'More'
+						)
+					),
+					this.state.desc ? _react2.default.createElement(
+						'div',
+						{ className: 'collapse in', id: 'collapseExample' + this.props.uid },
+						_react2.default.createElement(
+							'p',
+							null,
+							this.props.desc
+						)
+					) : null
+				)
+			);
+		}
+	}, {
+		key: 'expandText',
+		value: function expandText(id) {
+			this.state.desc ? this.setState({ desc: false }) : this.setState({ desc: true });
+		}
+	}]);
 
-    return ListSearchDesc;
+	return ListSearchDesc;
 }(_react2.default.Component);
 
 exports.default = ListSearchDesc;
@@ -26344,41 +26344,41 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 exports.default = function (context) {
-    context.listeners = [];
+	context.listeners = [];
 
-    context.notify = function () {
-        this.listeners.slice().forEach(function (listener) {
-            listener.fn.apply(listener.context);
-        });
-    };
+	context.notify = function () {
+		this.listeners.slice().forEach(function (listener) {
+			listener.fn.apply(listener.context);
+		});
+	};
 
-    context.onChange = function (listener, context) {
-        this.listeners.push({
-            fn: listener,
-            context: context || this
-        });
-    };
+	context.onChange = function (listener, context) {
+		this.listeners.push({
+			fn: listener,
+			context: context || this
+		});
+	};
 
-    context.offChange = function (listener) {
-        for (var i = 0; i < this.listeners.length; i++) {
-            if (this.listeners[i].fn === listener) {
-                this.listeners.splice(i, 1);
-                break;
-            }
-        }
-    };
-    return context;
+	context.offChange = function (listener) {
+		for (var i = 0; i < this.listeners.length; i++) {
+			if (this.listeners[i].fn === listener) {
+				this.listeners.splice(i, 1);
+				break;
+			}
+		}
+	};
+	return context;
 };
 
 },{}],220:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _baseModel = require('./baseModel');
@@ -26394,45 +26394,45 @@ var dataQuantity = 10;
 var query = '';
 
 var performSearch = function performSearch() {
-    return sampleData.slice(0, dataQuantity - 1).filter(function (d) {
-        return d.email.indexOf(query) > -1;
-    });
+	return sampleData.slice(0, dataQuantity - 1).filter(function (d) {
+		return d.email.indexOf(query) > -1;
+	});
 };
 
 exports.default = (0, _baseModel2.default)({
 
-    getData: function getData() {
-        return performSearch();
-    },
+	getData: function getData() {
+		return performSearch();
+	},
 
-    getDataQuantity: function getDataQuantity() {
-        return dataQuantity;
-    },
+	getDataQuantity: function getDataQuantity() {
+		return dataQuantity;
+	},
 
-    setDataQuantity: function setDataQuantity(value) {
-        dataQuantity = value;
-        this.notify();
-    },
+	setDataQuantity: function setDataQuantity(value) {
+		dataQuantity = value;
+		this.notify();
+	},
 
-    getQuery: function getQuery() {
-        return query;
-    },
+	getQuery: function getQuery() {
+		return query;
+	},
 
-    setQuery: function setQuery(value) {
-        query = value;
-        this.notify();
-    }
+	setQuery: function setQuery(value) {
+		query = value;
+		this.notify();
+	}
 });
 
 },{"../assets/json/data.json":208,"./baseModel":219}],221:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.default = {
-    Home: '/home',
-    Data: '/data'
+	Home: '/home',
+	Data: '/data'
 };
 
 },{}],222:[function(require,module,exports){
@@ -26783,7 +26783,7 @@ exports.default = HomeView;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -26813,69 +26813,69 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ListSearchView = function (_React$Component) {
-    _inherits(ListSearchView, _React$Component);
+	_inherits(ListSearchView, _React$Component);
 
-    function ListSearchView(props) {
-        _classCallCheck(this, ListSearchView);
+	function ListSearchView(props) {
+		_classCallCheck(this, ListSearchView);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchView).call(this, props));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchView).call(this, props));
 
-        _this.models = [_dataViewModel2.default];
-        _this.state = _this.getModelState();
-        return _this;
-    }
+		_this.models = [_dataViewModel2.default];
+		_this.state = _this.getModelState();
+		return _this;
+	}
 
-    _createClass(ListSearchView, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
+	_createClass(ListSearchView, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
 
-            this.models.forEach(function (model) {
-                return model.onChange(_this2.onModelChange, _this2);
-            });
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            var _this3 = this;
+			this.models.forEach(function (model) {
+				return model.onChange(_this2.onModelChange, _this2);
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			var _this3 = this;
 
-            this.models.forEach(function (model) {
-                return model.offChange(_this3.onModelChange);
-            });
-        }
-    }, {
-        key: 'onModelChange',
-        value: function onModelChange() {
-            this.setState(this.getModelState());
-        }
-    }, {
-        key: 'getModelState',
-        value: function getModelState() {
-            return { filterData: _dataViewModel2.default.getData() };
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'col-sm-24' },
-                _react2.default.createElement(
-                    'table',
-                    { className: 'table table-striped' },
-                    _react2.default.createElement(_listSearchHead2.default, null),
-                    _react2.default.createElement(
-                        'tbody',
-                        null,
-                        this.state.filterData.map(function (obj, i) {
-                            return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, email: obj.email, desc: obj.details });
-                        })
-                    )
-                )
-            );
-        }
-    }]);
+			this.models.forEach(function (model) {
+				return model.offChange(_this3.onModelChange);
+			});
+		}
+	}, {
+		key: 'onModelChange',
+		value: function onModelChange() {
+			this.setState(this.getModelState());
+		}
+	}, {
+		key: 'getModelState',
+		value: function getModelState() {
+			return { filterData: _dataViewModel2.default.getData() };
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'col-sm-24' },
+				_react2.default.createElement(
+					'table',
+					{ className: 'table table-striped' },
+					_react2.default.createElement(_listSearchHead2.default, null),
+					_react2.default.createElement(
+						'tbody',
+						null,
+						this.state.filterData.map(function (obj, i) {
+							return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, email: obj.email, desc: obj.details });
+						})
+					)
+				)
+			);
+		}
+	}]);
 
-    return ListSearchView;
+	return ListSearchView;
 }(_react2.default.Component);
 
 exports.default = ListSearchView;

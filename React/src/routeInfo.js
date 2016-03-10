@@ -1,6 +1,6 @@
 'use strict';
 
 export default {
-    Home: '/home',
-    Data: '/data'
+	Home: '/home',
+	Data: '/data'
 }

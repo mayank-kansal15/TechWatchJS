@@ -10,9 +10,9 @@ import DataView from './views/dataView';
 
 render((
 	<Router history={browserHistory}>
-	  <Route path={'/'} component={AppView}>
-	    <Route path={RouteInfo.Home} component={HomeView} />
-	    <Route path={RouteInfo.Data} component={DataView} />
-	  </Route>
+		<Route path={'/'} component={AppView}>
+			<Route path={RouteInfo.Home} component={HomeView} />
+			<Route path={RouteInfo.Data} component={DataView} />
+		</Route>
 	</Router>
 ), document.getElementById('root'));

@@ -15,7 +15,7 @@ export default class DataView extends React.Component{
 
 		this.models = [ DataViewModel ];
 		this.state = {
-            view: 'grid'
+			view: 'grid'
 		};
 	}
 
@@ -43,22 +43,22 @@ export default class DataView extends React.Component{
 		return(
 			<div className="container">
 				<div className="dashboard">
-				    <div className="row">
-				        <div className="col-sm-24">
+					<div className="row">
+						<div className="col-sm-24">
 							<div className="panel panel-default">
 								<div className="panel-heading">
-					                <ul className="list-inline clearfix">
-						                <li>
-						                	<NavbarForm
-						                		query={this.state.query}
-						                		dataQuantity={this.state.dataQuantity}
-						                		view={this.state.view}
-						                		filterSearch={this.onFilterTextChange.bind(this)}
-						                		changeViewHandler={this.changeView.bind(this)}
-						                		changeQuantityHandler={this.onDataQuantityChange.bind(this)} />
-						                </li>
-					                </ul>
-					            </div>
+									<ul className="list-inline clearfix">
+										<li>
+											<NavbarForm
+												query={this.state.query}
+												dataQuantity={this.state.dataQuantity}
+												view={this.state.view}
+												filterSearch={this.onFilterTextChange.bind(this)}
+												changeViewHandler={this.changeView.bind(this)}
+												changeQuantityHandler={this.onDataQuantityChange.bind(this)} />
+										</li>
+									</ul>
+								</div>
 								{ view }
 							</div>
 						</div>

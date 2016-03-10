@@ -9,30 +9,30 @@ let dataQuantity = 10;
 let query = '';
 
 let performSearch = () => {
-    return sampleData.slice(0, dataQuantity - 1).filter(d => d.email.indexOf(query) > -1);
+	return sampleData.slice(0, dataQuantity - 1).filter(d => d.email.indexOf(query) > -1);
 }
 
 export default BaseModel({
 
-    getData: function() {
-        return performSearch();
-    },
+	getData: function() {
+		return performSearch();
+	},
 
-    getDataQuantity: function() {
-        return dataQuantity;
-    },
+	getDataQuantity: function() {
+		return dataQuantity;
+	},
 
-    setDataQuantity: function(value) {
-        dataQuantity = value;
-        this.notify();
-    },
+	setDataQuantity: function(value) {
+		dataQuantity = value;
+		this.notify();
+	},
 
-    getQuery: function() {
-        return query;
-    },
+	getQuery: function() {
+		return query;
+	},
 
-    setQuery: function(value) {
-        query = value;
-        this.notify();
-    }
+	setQuery: function(value) {
+		query = value;
+		this.notify();
+	}
 })

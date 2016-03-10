@@ -12,7 +12,7 @@ export default class ListSearchHead extends React.Component{
 					<th className='title'>Title</th>
 					<th>Description</th>
 				</tr>
-			</thead>	
+			</thead>
 		)
 	}
 }

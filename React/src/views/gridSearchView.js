@@ -15,32 +15,32 @@ export default class GridSearchView extends React.Component{
 	}
 
 	componentDidMount() {
-        this.models.forEach(model => model.onChange(this.onModelChange, this));
+		this.models.forEach(model => model.onChange(this.onModelChange, this));
 	}
 
 	componentWillUnmount() {
-        this.models.forEach(model => model.offChange(this.onModelChange));
+		this.models.forEach(model => model.offChange(this.onModelChange));
 	}
 
 	onModelChange() {
-        this.setState(this.getModelState());
+		this.setState(this.getModelState());
 	}
 
 	getModelState() {
-	    return { filterData: DataViewModel.getData() };
+		return { filterData: DataViewModel.getData() };
 	}
 
 	render(){
 		return(
 			<div>
 				{this.state.filterData.map((obj, i) => (
-        			<div className="col-sm-12 col-md-8" key={obj.id} >
+					<div className="col-sm-12 col-md-8" key={obj.id} >
 						<div className="thumbnail">
 							<GridSearchImage imageSrc={obj.imgSrc}/>
 							<GridSearchDesc uid={obj.id} title={obj.email} desc={obj.details}/>
 						</div>
 					</div>
-        		))}
+				))}
 			</div>
 		)
 	}
