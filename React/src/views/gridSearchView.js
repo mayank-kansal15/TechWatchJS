@@ -39,7 +39,7 @@ export default class GridSearchView extends React.Component{
 				{this.state.filterData.map((obj, i) => (
 					<div className="col-sm-12 col-md-8" key={obj.id} >
 						<div className="thumbnail">
-							{ this.state.showImages ? <Image height={300} width={200}/> : null }
+							{ this.state.showImages ? <Image height={200} width={300}/> : null }
 							<GridSearchDesc uid={obj.id} title={obj.email} desc={obj.details}/>
 						</div>
 					</div>

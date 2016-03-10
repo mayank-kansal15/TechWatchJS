@@ -8,7 +8,7 @@ export default class AppView extends React.Component{
 	render(){
 		return(
 			<div className="myApp">
-				<NavbarView/>
+				<NavbarView />
 				{this.props.children}
 			</div>
 		);

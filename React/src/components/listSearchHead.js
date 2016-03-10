@@ -8,7 +8,7 @@ export default class ListSearchHead extends React.Component{
 		return(
 			<thead>
 				<tr>
-					<th><input type='checkbox' id='blankCheckbox' value='option1' aria-label='...' /></th>
+					<th style={{width: '45px'}}>Thumbnails</th>
 					<th className='title'>Title</th>
 					<th>Description</th>
 				</tr>

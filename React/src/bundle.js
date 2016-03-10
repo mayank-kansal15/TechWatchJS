@@ -26128,8 +26128,8 @@ var ListSearchHead = function (_React$Component) {
 					null,
 					_react2.default.createElement(
 						'th',
-						null,
-						_react2.default.createElement('input', { type: 'checkbox', id: 'blankCheckbox', value: 'option1', 'aria-label': '...' })
+						{ style: { width: '45px' } },
+						'Thumbnails'
 					),
 					_react2.default.createElement(
 						'th',
@@ -26766,7 +26766,7 @@ var GridSearchView = function (_React$Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'thumbnail' },
-							_this4.state.showImages ? _react2.default.createElement(_image2.default, { height: 300, width: 200 }) : null,
+							_this4.state.showImages ? _react2.default.createElement(_image2.default, { height: 200, width: 300 }) : null,
 							_react2.default.createElement(_gridSearchDesc2.default, { uid: obj.id, title: obj.email, desc: obj.details })
 						)
 					);
