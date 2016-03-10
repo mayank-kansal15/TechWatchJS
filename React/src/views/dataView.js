@@ -14,8 +14,26 @@ export default class DataView extends React.Component{
 		super(props);
 
 		this.models = [ DataViewModel ];
-		this.state = {
+		this.state = Object.assign(this.getModelState(),{
 			view: 'grid'
+		});
+	}
+
+	componentDidMount() {
+		this.models.forEach(model => model.onChange(this.onModelChange, this));
+	}
+
+	componentWillUnmount() {
+		this.models.forEach(model => model.offChange(this.onModelChange));
+	}
+
+	onModelChange() {
+		this.setState(this.getModelState());
+	}
+
+	getModelState() {
+		return { 
+			showImages: DataViewModel.getShowImages()
 		};
 	}
 
@@ -29,6 +47,10 @@ export default class DataView extends React.Component{
 
 	changeView(view){
 		this.setState({ view });
+	}
+
+	onImageVisibilityChange(canShow){
+		DataViewModel.setShowImages(canShow);
 	}
 
 	render(){
@@ -53,9 +75,11 @@ export default class DataView extends React.Component{
 												query={this.state.query}
 												dataQuantity={this.state.dataQuantity}
 												view={this.state.view}
+												showImages={this.state.showImages}
 												filterSearch={this.onFilterTextChange.bind(this)}
 												changeViewHandler={this.changeView.bind(this)}
-												changeQuantityHandler={this.onDataQuantityChange.bind(this)} />
+												changeQuantityHandler={this.onDataQuantityChange.bind(this)}
+												onImageVisibilityChange={this.onImageVisibilityChange.bind(this)} />
 										</li>
 									</ul>
 								</div>

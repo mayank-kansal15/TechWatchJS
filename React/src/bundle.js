@@ -25895,7 +25895,7 @@ var GridSearchDesc = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridSearchDesc).call(this, props));
 
 		_this.state = {
-			desc: false
+			showDesc: false
 		};
 		return _this;
 	}
@@ -25919,42 +25919,28 @@ var GridSearchDesc = function (_React$Component) {
 						null,
 						_react2.default.createElement(
 							'a',
-							{ role: 'button', 'data-toggle': 'collapse', 'data-id': '#collapseExample' + this.props.uid, onClick: this.expandText.bind(this, this.props.uid) },
-							'More'
+							{ role: 'button', onClick: this.expandText.bind(this) },
+							this.state.showDesc ? 'Less' : 'More'
 						)
 					),
-					this.state.desc ? _react2.default.createElement(
+					this.state.showDesc ? _react2.default.createElement(
 						'div',
-						{ className: 'collapse in', id: 'collapseExample' + this.props.uid },
+						{ className: 'collapse in' },
 						_react2.default.createElement(
 							'p',
 							null,
 							this.props.desc
 						)
-					) : null,
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: '#', className: 'btn btn-primary', role: 'button' },
-							'Button'
-						),
-						' ',
-						_react2.default.createElement(
-							'a',
-							{ href: '#', className: 'btn btn-default', role: 'button' },
-							'Button'
-						)
-					)
+					) : null
 				)
 			);
 		}
 	}, {
 		key: 'expandText',
-		value: function expandText(id) {
-			var currentElement = document.getElementById('collapseExample' + id);
-			this.state.desc ? this.setState({ desc: false }) : this.setState({ desc: true });
+		value: function expandText() {
+			this.setState({
+				showDesc: !this.state.showDesc
+			});
 		}
 	}]);
 
@@ -25984,30 +25970,29 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var GridSearchImage = function (_React$Component) {
-	_inherits(GridSearchImage, _React$Component);
+var Image = function (_React$Component) {
+	_inherits(Image, _React$Component);
 
-	function GridSearchImage() {
-		_classCallCheck(this, GridSearchImage);
+	function Image() {
+		_classCallCheck(this, Image);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(GridSearchImage).apply(this, arguments));
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Image).apply(this, arguments));
 	}
 
-	_createClass(GridSearchImage, [{
+	_createClass(Image, [{
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement('img', {
-				alt: '100%x200',
-				src: this.props.imageSrc + '?random' + Math.random(),
+				src: 'http://lorempixel.com/' + this.props.width + '/' + this.props.height + '/?random0.2853862527691229?random' + Math.random(),
 				'data-holder-rendered': true,
-				style: { height: '200px', width: '100%', display: 'block' } });
+				style: { height: this.props.height + 'px', width: this.props.width + 'px', display: 'block' } });
 		}
 	}]);
 
-	return GridSearchImage;
+	return Image;
 }(_react2.default.Component);
 
-exports.default = GridSearchImage;
+exports.default = Image;
 
 },{"react":207}],214:[function(require,module,exports){
 'use strict';
@@ -26022,6 +26007,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _image = require('./image');
+
+var _image2 = _interopRequireDefault(_image);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26030,21 +26019,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ListSearchDesc = function (_React$Component) {
-	_inherits(ListSearchDesc, _React$Component);
+var ListSearchshowDesc = function (_React$Component) {
+	_inherits(ListSearchshowDesc, _React$Component);
 
-	function ListSearchDesc(props) {
-		_classCallCheck(this, ListSearchDesc);
+	function ListSearchshowDesc(props) {
+		_classCallCheck(this, ListSearchshowDesc);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchDesc).call(this, props));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListSearchshowDesc).call(this, props));
 
 		_this.state = {
-			desc: false
+			showDesc: false
 		};
 		return _this;
 	}
 
-	_createClass(ListSearchDesc, [{
+	_createClass(ListSearchshowDesc, [{
 		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
@@ -26053,12 +26042,12 @@ var ListSearchDesc = function (_React$Component) {
 				_react2.default.createElement(
 					'td',
 					null,
-					_react2.default.createElement('input', { type: 'checkbox', id: 'blankCheckboxx', value: 'option1', 'aria-label': '...' })
+					this.props.showImages ? _react2.default.createElement(_image2.default, { height: 30, width: 30 }) : null
 				),
 				_react2.default.createElement(
 					'td',
 					null,
-					this.props.email
+					this.props.data.email
 				),
 				_react2.default.createElement(
 					'td',
@@ -26068,17 +26057,17 @@ var ListSearchDesc = function (_React$Component) {
 						null,
 						_react2.default.createElement(
 							'a',
-							{ 'data-toggle': 'collapse', href: '#collapseExample3', onClick: this.expandText.bind(this, this.props.uid) },
-							'More'
+							{ 'data-toggle': 'collapse', onClick: this.expandText.bind(this) },
+							this.state.showDesc ? 'Less' : 'More'
 						)
 					),
-					this.state.desc ? _react2.default.createElement(
+					this.state.showDesc ? _react2.default.createElement(
 						'div',
-						{ className: 'collapse in', id: 'collapseExample' + this.props.uid },
+						{ className: 'collapse in' },
 						_react2.default.createElement(
 							'p',
 							null,
-							this.props.desc
+							this.props.data.details
 						)
 					) : null
 				)
@@ -26086,17 +26075,19 @@ var ListSearchDesc = function (_React$Component) {
 		}
 	}, {
 		key: 'expandText',
-		value: function expandText(id) {
-			this.state.desc ? this.setState({ desc: false }) : this.setState({ desc: true });
+		value: function expandText() {
+			this.setState({
+				showDesc: !this.state.showDesc
+			});
 		}
 	}]);
 
-	return ListSearchDesc;
+	return ListSearchshowDesc;
 }(_react2.default.Component);
 
-exports.default = ListSearchDesc;
+exports.default = ListSearchshowDesc;
 
-},{"react":207}],215:[function(require,module,exports){
+},{"./image":213,"react":207}],215:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26238,8 +26229,23 @@ var NavbarForm = function (_React$Component) {
 							labelName: obj.labelName,
 							changeViewHandler: _this2.props.changeViewHandler.bind(_this2) });
 					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'btn-group', 'data-toggle': 'buttons' },
+					_react2.default.createElement(
+						'label',
+						{ className: 'btn btn-primary' + (this.props.showImages ? ' active' : '') },
+						_react2.default.createElement('input', { type: 'checkbox', checked: this.props.showImages, onChange: this.onImageVisibilityChange.bind(this) }),
+						this.props.showImages ? 'Hide Images' : 'Show Images'
+					)
 				)
 			);
+		}
+	}, {
+		key: 'onImageVisibilityChange',
+		value: function onImageVisibilityChange(e) {
+			this.props.onImageVisibilityChange(e.target.checked);
 		}
 	}]);
 
@@ -26392,6 +26398,7 @@ var sampleData = require('../assets/json/data.json');
 var data = null;
 var dataQuantity = 10;
 var query = '';
+var showImages = true;
 
 var performSearch = function performSearch() {
 	return sampleData.slice(0, dataQuantity - 1).filter(function (d) {
@@ -26420,6 +26427,15 @@ exports.default = (0, _baseModel2.default)({
 
 	setQuery: function setQuery(value) {
 		query = value;
+		this.notify();
+	},
+
+	getShowImages: function getShowImages() {
+		return showImages;
+	},
+
+	setShowImages: function setShowImages(value) {
+		showImages = value;
 		this.notify();
 	}
 });
@@ -26538,13 +26554,43 @@ var DataView = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DataView).call(this, props));
 
 		_this.models = [_dataViewModel2.default];
-		_this.state = {
+		_this.state = Object.assign(_this.getModelState(), {
 			view: 'grid'
-		};
+		});
 		return _this;
 	}
 
 	_createClass(DataView, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			this.models.forEach(function (model) {
+				return model.onChange(_this2.onModelChange, _this2);
+			});
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			var _this3 = this;
+
+			this.models.forEach(function (model) {
+				return model.offChange(_this3.onModelChange);
+			});
+		}
+	}, {
+		key: 'onModelChange',
+		value: function onModelChange() {
+			this.setState(this.getModelState());
+		}
+	}, {
+		key: 'getModelState',
+		value: function getModelState() {
+			return {
+				showImages: _dataViewModel2.default.getShowImages()
+			};
+		}
+	}, {
 		key: 'onDataQuantityChange',
 		value: function onDataQuantityChange(dataQuantity) {
 			_dataViewModel2.default.setDataQuantity(dataQuantity);
@@ -26558,6 +26604,11 @@ var DataView = function (_React$Component) {
 		key: 'changeView',
 		value: function changeView(view) {
 			this.setState({ view: view });
+		}
+	}, {
+		key: 'onImageVisibilityChange',
+		value: function onImageVisibilityChange(canShow) {
+			_dataViewModel2.default.setShowImages(canShow);
 		}
 	}, {
 		key: 'render',
@@ -26600,9 +26651,11 @@ var DataView = function (_React$Component) {
 												query: this.state.query,
 												dataQuantity: this.state.dataQuantity,
 												view: this.state.view,
+												showImages: this.state.showImages,
 												filterSearch: this.onFilterTextChange.bind(this),
 												changeViewHandler: this.changeView.bind(this),
-												changeQuantityHandler: this.onDataQuantityChange.bind(this) })
+												changeQuantityHandler: this.onDataQuantityChange.bind(this),
+												onImageVisibilityChange: this.onImageVisibilityChange.bind(this) })
 										)
 									)
 								),
@@ -26633,9 +26686,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _gridSearchImage = require('../components/gridSearchImage');
+var _image = require('../components/image');
 
-var _gridSearchImage2 = _interopRequireDefault(_gridSearchImage);
+var _image2 = _interopRequireDefault(_image);
 
 var _gridSearchDesc = require('../components/gridSearchDesc');
 
@@ -26692,11 +26745,16 @@ var GridSearchView = function (_React$Component) {
 	}, {
 		key: 'getModelState',
 		value: function getModelState() {
-			return { filterData: _dataViewModel2.default.getData() };
+			return {
+				filterData: _dataViewModel2.default.getData(),
+				showImages: _dataViewModel2.default.getShowImages()
+			};
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this4 = this;
+
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -26707,7 +26765,7 @@ var GridSearchView = function (_React$Component) {
 						_react2.default.createElement(
 							'div',
 							{ className: 'thumbnail' },
-							_react2.default.createElement(_gridSearchImage2.default, { imageSrc: obj.imgSrc }),
+							_this4.state.showImages ? _react2.default.createElement(_image2.default, { height: 300, width: 200 }) : null,
 							_react2.default.createElement(_gridSearchDesc2.default, { uid: obj.id, title: obj.email, desc: obj.details })
 						)
 					);
@@ -26721,7 +26779,7 @@ var GridSearchView = function (_React$Component) {
 
 exports.default = GridSearchView;
 
-},{"../components/gridSearchDesc":212,"../components/gridSearchImage":213,"../models/dataViewModel":220,"react":207}],225:[function(require,module,exports){
+},{"../components/gridSearchDesc":212,"../components/image":213,"../models/dataViewModel":220,"react":207}],225:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -26851,11 +26909,16 @@ var ListSearchView = function (_React$Component) {
 	}, {
 		key: 'getModelState',
 		value: function getModelState() {
-			return { filterData: _dataViewModel2.default.getData() };
+			return {
+				filterData: _dataViewModel2.default.getData(),
+				showImages: _dataViewModel2.default.getShowImages()
+			};
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this4 = this;
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'col-sm-24' },
@@ -26867,7 +26930,7 @@ var ListSearchView = function (_React$Component) {
 						'tbody',
 						null,
 						this.state.filterData.map(function (obj, i) {
-							return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, email: obj.email, desc: obj.details });
+							return _react2.default.createElement(_listSearchDesc2.default, { key: obj.id, uid: obj.id, data: obj, showImages: _this4.state.showImages });
 						})
 					)
 				)

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import GridSearchImage from '../components/gridSearchImage'
+import Image from '../components/image'
 import GridSearchDesc from '../components/gridSearchDesc'
 import DataViewModel from '../models/dataViewModel'
 
@@ -27,7 +27,10 @@ export default class GridSearchView extends React.Component{
 	}
 
 	getModelState() {
-		return { filterData: DataViewModel.getData() };
+		return { 
+			filterData: DataViewModel.getData(),
+			showImages: DataViewModel.getShowImages()
+		};
 	}
 
 	render(){
@@ -36,7 +39,7 @@ export default class GridSearchView extends React.Component{
 				{this.state.filterData.map((obj, i) => (
 					<div className="col-sm-12 col-md-8" key={obj.id} >
 						<div className="thumbnail">
-							<GridSearchImage imageSrc={obj.imgSrc}/>
+							{ this.state.showImages ? <Image height={300} width={200}/> : null }
 							<GridSearchDesc uid={obj.id} title={obj.email} desc={obj.details}/>
 						</div>
 					</div>

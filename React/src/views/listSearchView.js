@@ -27,7 +27,10 @@ export default class ListSearchView extends React.Component{
 	}
 
 	getModelState() {
-		return { filterData: DataViewModel.getData() };
+		return { 
+			filterData: DataViewModel.getData(),
+			showImages: DataViewModel.getShowImages()
+		};
 	}
 
 	render(){
@@ -37,7 +40,7 @@ export default class ListSearchView extends React.Component{
 				<ListSearchHead />
 					<tbody>
 						{
-							this.state.filterData.map((obj, i) => <ListSearchDesc key={obj.id} uid={obj.id} email={obj.email} desc={obj.details}/> )
+							this.state.filterData.map((obj, i) => <ListSearchDesc key={obj.id} uid={obj.id} data={obj} showImages={this.state.showImages}/> )
 						}
 					</tbody>
 				</table>

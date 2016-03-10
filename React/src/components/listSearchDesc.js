@@ -1,12 +1,13 @@
 'use strict';
 
 import React from 'react';
+import Image from './image'
 
-export default class ListSearchDesc extends React.Component{
+export default class ListSearchshowDesc extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			desc : false
+			showDesc : false
 		}
 	}
 
@@ -14,22 +15,20 @@ export default class ListSearchDesc extends React.Component{
 		return(
 			<tr>
 				<td>
-					<input type='checkbox' id='blankCheckboxx' value='option1' aria-label='...' />
+					{ this.props.showImages ? <Image height={30} width={30}/> : null }
 				</td>
 				<td>
-					{this.props.email}
+					{this.props.data.email}
 				</td>
 				<td>
 					<p>
-						<a data-toggle='collapse' href='#collapseExample3' onClick={this.expandText.bind(this, this.props.uid)}>
-							More
+						<a data-toggle='collapse' onClick={this.expandText.bind(this)}>
+							{ this.state.showDesc ? 'Less' : 'More'}
 						</a>
 					</p>
-					{ this.state.desc ? (
-						<div className='collapse in' id={'collapseExample' + this.props.uid} >
-							<p>
-								{this.props.desc}
-							</p>
+					{ this.state.showDesc ? (
+						<div className='collapse in'>
+							<p>{this.props.data.details}</p>
 						</div>
 					) : null}
 				</td>
@@ -37,7 +36,9 @@ export default class ListSearchDesc extends React.Component{
 		)
 	}
 
-	expandText(id){
-		this.state.desc ? this.setState({desc: false}) : this.setState({desc: true});
+	expandText(){
+		this.setState({
+			showDesc: !this.state.showDesc
+		})
 	}
 }
