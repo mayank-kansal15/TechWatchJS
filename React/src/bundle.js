@@ -26341,6 +26341,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 	_react2.default.createElement(
 		_reactRouter.Route,
 		{ path: '/', component: _appView2.default },
+		_react2.default.createElement(_reactRouter.IndexRoute, { component: _homeView2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: _routeInfo2.default.Home, component: _homeView2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: _routeInfo2.default.Data, component: _dataView2.default })
 	)
