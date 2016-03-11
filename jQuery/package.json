@@ -1,0 +1,29 @@
+{
+  "name": "SampleUI",
+  "version": "1.0.0",
+  "description": "npm install",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https"
+  },
+  "homepage": "https",
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-watch": "^4.3.5"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
