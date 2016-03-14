@@ -1,11 +1,14 @@
 var UtilityFunctions = {
+	searchDataComplete : [],
 	searchData : [],
-	view : '',
+	view : 'grid',
+	query: '',
 	bindEvents: function(){
 		console.log('bindEvents called');
 		var self = this;
 		$('.search').keyup(function(){self.performSearch($(this).val())});
 		$('.toggle-button label').click(function(){self.toggleView($(this).data('output'))});
+		$('.quantity-control').change(function(){self.handleChangeQuantity($(this).val())})
 	},
 	generateDataGrid : function(){
 		console.log('generateData called');
@@ -41,7 +44,8 @@ var UtilityFunctions = {
 		console.log('done');
 	},
 	performSearch : function(query){
-		var filterData = searchDummyData.filter(function(obj) {
+		this.query = query;
+		var filterData = this.searchDataComplete.filter(function(obj) {
 		    return obj.email.indexOf(query) != -1;
 		});
 		this.searchData = filterData;
@@ -59,11 +63,17 @@ var UtilityFunctions = {
 			$('.list-view').show();
 			this.generateDataList();
 		}
+	},
+	handleChangeQuantity : function(quantity){
+		this.searchDataComplete = searchDummyData.slice(0, $('.quantity-control').val() -1 );
+		this.performSearch(this.query);
 	}
 }
 $(document).ready(function(){
 	UtilityFunctions.bindEvents();
-	var data = searchDummyData.slice(0, 99);
+	$('.quantity-control').val('200');
+	var data = searchDummyData.slice(0, 199);
 	UtilityFunctions.searchData = data;
+	UtilityFunctions.searchDataComplete = data;
 	UtilityFunctions.generateDataGrid();
 })
