@@ -10740,3 +10740,6 @@ body {
 .list-view{
   display: none;
 }
+.list-view table tbody tr:first-child{
+  display: none;
+}
