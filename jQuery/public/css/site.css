@@ -10743,3 +10743,6 @@ body {
 .list-view table tbody tr:first-child{
   display: none;
 }
+.grid-view img, .list-view img{
+  display: none;
+}

@@ -8,7 +8,8 @@ var UtilityFunctions = {
 		var self = this;
 		$('.search').keyup(function(){self.performSearch($(this).val())});
 		$('.toggle-button label').click(function(){self.toggleView($(this).data('output'))});
-		$('.quantity-control').change(function(){self.handleChangeQuantity($(this).val())})
+		$('.quantity-control').change(function(){self.handleChangeQuantity($(this).val())});
+		$('.toggle-images label').click(function(){self.handleImageVisibility($(this).data('image'))});
 	},
 	generateDataGrid : function(){
 		console.log('generateData called');
@@ -67,6 +68,9 @@ var UtilityFunctions = {
 	handleChangeQuantity : function(quantity){
 		this.searchDataComplete = searchDummyData.slice(0, $('.quantity-control').val() -1 );
 		this.performSearch(this.query);
+	},
+	handleImageVisibility : function(visibility){
+		visibility === 'show-image' ? $('.grid-view img, .list-view img').show() : $('.grid-view img, .list-view img').hide();
 	}
 }
 $(document).ready(function(){
