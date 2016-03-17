@@ -5,6 +5,7 @@ export class SearchModel{
         searchDataUpdated:Array =searchDummyData.slice(0, 199);
         gridView:boolean = true;
         listView:boolean = false;
+        imageVisibility:boolean = false;
         toggleView(value){
         	console.log(value);
         	if(value === 'grid'){
@@ -34,6 +35,8 @@ export class PerformSearchService{
 		value = parseInt(value);
 		this.SearchModelObject.searchDataUpdated = this.SearchModelObject.searchDataComplete.slice(0, value -1);
 	}
-
+	toggleImage(value){
+		this.SearchModelObject.imageVisibility = value;
+	}
 
 }

@@ -11,9 +11,7 @@ import {FormSelectComponent} from './form-select.component';
     	<div class="navbar-form">
 			<form-select></form-select>
         	<form-search placeholderText="search"></form-search>
-			<div class="btn-group" data-toggle="buttons">
-		    	<form-toggle-button [buttonModel]="buttonModel"></form-toggle-button>	
-			</div>
+	    	<form-toggle-button [buttonModel]="buttonModel"></form-toggle-button>	
 		</div>
     `,
 })
