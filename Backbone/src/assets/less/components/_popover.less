@@ -1,0 +1,26 @@
+.popover{
+  box-shadow: none;
+  border: 3px solid @popover-border-color;
+  border-radius: 0;
+  padding: 0;
+  min-width: 560px;
+}
+.popover-title{
+  border-radius: 0;
+  color: #ffffff;
+}
+.popover-content{
+  padding: 0;
+  max-height: 250px;
+  overflow: auto;
+}
+.film{
+  background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    z-index: @zindex-popover - 1;
+}
