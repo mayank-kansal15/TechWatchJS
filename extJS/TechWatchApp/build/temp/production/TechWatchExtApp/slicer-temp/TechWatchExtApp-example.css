@@ -30517,9 +30517,10 @@ tr.x-grid-subtable-row {
 
 /* line 24, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .thumb {
-  height: 60%; }
+  height: 60%;
+  text-align: center; }
 
-/* line 28, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 29, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .thumb-wrap {
   display: inline-block;
   width: 30%;
@@ -30532,31 +30533,31 @@ tr.x-grid-subtable-row {
   padding: 10px;
   text-align: left; }
 
-/* line 41, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 42, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .detailsDiv {
   vertical-align: bottom; }
 
-/* line 45, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 46, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .showThumb {
   height: 348px; }
 
-/* line 49, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 50, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .hideThumb {
   height: 200px; }
 
-/* line 53, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 54, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .hideElement {
   display: none; }
 
-/* line 57, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 58, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .showElement {
   display: block; }
 
-/* line 61, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 62, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .containerDiv {
   text-align: center; }
 
-/* line 65, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 66, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .btnCls {
   margin: 5px;
   color: #fff;
@@ -30578,14 +30579,14 @@ tr.x-grid-subtable-row {
   border-radius: 4px;
   -webkit-user-select: none; }
 
-/* line 87, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 88, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .panelToolbar {
   color: #ffffff;
   background-color: #5e7e89;
   border-color: transparent;
   padding: 10px; }
 
-/* line 94, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
+/* line 95, D:/TechWatchApp/build/temp/production/TechWatchExtApp/slicer-temp/../../../../../sass/src/Application.scss */
 .centerPanelCls {
   width: 80%;
   /*margin-left:3%;

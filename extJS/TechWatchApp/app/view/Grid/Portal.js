@@ -6,7 +6,7 @@ Ext.define("TechWatchExtApp.view.Grid.Portal",{
     
     xtype:'gridView',
     autoDestroy: true,
-    store:Ext.data.StoreManager.lookup('listViewStore'),
+    store:'listViewStore',
     itemSelector: 'div.thumb-wrap',
     itemId: 'gridViewInstance',
     itemId:'infoGrid',

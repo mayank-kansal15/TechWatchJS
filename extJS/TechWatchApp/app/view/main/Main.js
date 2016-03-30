@@ -13,8 +13,7 @@ Ext.define('TechWatchExtApp.view.main.Main', {
     ],
     xtype: 'app-main',
     
-    scrollable:false,
-   // width:Ext.getBody().getWidth(),
+    scrollable:false,   
     height:Ext.getBody().getHeight(),
     layout: {
         type: 'fit'
@@ -25,7 +24,7 @@ Ext.define('TechWatchExtApp.view.main.Main', {
             xtype: 'panel',
             id:'centerPanel',            
             cls:'centerPanelCls',
-            activeItem:'infoGrid',
+            //activeItem:'infoGrid',
             height:Ext.getBody().getHeight(),
             layout:{
                 type:'card',
@@ -35,10 +34,7 @@ Ext.define('TechWatchExtApp.view.main.Main', {
                 {
                     xtype: 'toolbar',
                     dock: 'top',
-                    cls:'panelToolbar',
-                    defaults: { 
-                       // height: 30
-                    },
+                    cls:'panelToolbar',                    
                     items: [
                         {
                             xtype:'combobox',          
@@ -49,17 +45,15 @@ Ext.define('TechWatchExtApp.view.main.Main', {
                             queryMode: 'local',
                             displayField: 'value',
                             valueField: 'value',
-                            value:2500,
+                            //value:2500,
+                            value:10,
                             width:80,
                             listeners:{
                                 change:function( dropdown, newValue, oldValue, eOpts ){
-                                    var requiredNoOfRecords = newValue;
-                                    TechWatchExtApp.listViewStore.clearFilter();
-                                    TechWatchExtApp.listViewStore.filterBy(function(record){
-                                            var recordIndex =  TechWatchExtApp.listViewStore.indexOf(record);
-                                            return recordIndex > newValue ? false : true;
-                                    });
+                                    var requiredNoOfRecords = newValue;                                    
                                     TechWatchExtApp.noOfLoadedRecords = newValue;
+                                    TechWatchExtApp.getApplication().readFromJSON(newValue, false);
+                                    
                                 }
                             }
                         },
@@ -67,33 +61,12 @@ Ext.define('TechWatchExtApp.view.main.Main', {
                             xtype: 'textfield',                                            
                             emptyText:'Search',
                             listeners:{
-                                change: function(textfield, newValue, oldValue, eOpts ){
-                                    //TechWatchExtApp.listViewStore.clearFilter();
-                                    var combobox = textfield.up('#centerPanel').down('noOfRecordsDropdown');
-                                    //var noOfRecords = combobox
-                                    // TechWatchExtApp.listViewStore.clearFilter();
-                                    // TechWatchExtApp.listViewStore.filterBy(function(record){
-                                    //         var recordIndex =  TechWatchExtApp.listViewStore.indexOf(record);
-                                    //         return recordIndex > TechWatchExtApp.noOfLoadedRecords ? false : true;
-                                    // });
-                                    if(newValue == ""){
-                                        // TechWatchExtApp.listViewStore.clearFilter();
-                                        // TechWatchExtApp.listViewStore.filterBy(function(record){
-                                        //     var recordIndex =  TechWatchExtApp.listViewStore.indexOf(record);
-                                        //     return recordIndex > TechWatchExtApp.noOfLoadedRecords ? false : true;
-                                        // });
-                                    }
-                                    else{
-                                        // TechWatchExtApp.listViewStore.addFilter(function(record){
-                                        //     var recordEmail = record.get('email');
-                                        //     var containsString = recordEmail.indexOf(newValue) > -1 ? true : false;
-                                        //     // var recordIndex = TechWatchExtApp.listViewStore.indexOf(record);
-                                        //     // if(recordIndex == -1)
-                                        //     //     return false;
-                                        //     //var indexOfRecordLessThanLoadedRecords = recordIndex < TechWatchExtApp.noOfLoadedRecords ? true : false;
-                                        //     return containsString ? true : false;
-                                        // });
-                                    }
+                                change: function(textfield, newValue, oldValue, eOpts ){                                    
+                                    TechWatchExtApp.listViewStore.clearFilter();
+                                    TechWatchExtApp.listViewStore.filterBy(function(record){
+                                            var bFound = record.get('email').indexOf(newValue);
+                                            return bFound != -1 ? true : false;
+                                    });                                    
                                 }
                             }                        
                         },
@@ -121,6 +94,7 @@ Ext.define('TechWatchExtApp.view.main.Main', {
                                if(activeItem.xtype != 'listView'){
                                     parentPanel.add({xtype:'listView'});                        
                                     parentPanel.getLayout().setActiveItem('infoList'); 
+                                    parentPanel.doLayout();
                                }                                
                                 //parentPanel.down('listView').getView().refresh(); 
                             } 
@@ -153,12 +127,12 @@ Ext.define('TechWatchExtApp.view.main.Main', {
                 }
             ],
             items:[                
-                {                    
-                    xtype: 'listView'            
-                },
-                {                   
-                    xtype:'gridView'                            
-                }
+                // {                    
+                //     xtype: 'listView'            
+                // },
+                // {                   
+                //     xtype:'gridView'                            
+                // }
             ]
         }
     ]

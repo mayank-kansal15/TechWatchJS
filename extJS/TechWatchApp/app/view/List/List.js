@@ -5,7 +5,7 @@ Ext.define("TechWatchExtApp.view.List.List",{
     xtype:'listView',
     itemId:'infoList',
     autoDestroy:true,
-    store: Ext.data.StoreManager.lookup('listViewStore'),//Ext.data.StoreManager.lookup('listViewStore'),
+    store: 'listViewStore',
     // selModel: {
     //       selType: 'checkboxmodel'
     // },
